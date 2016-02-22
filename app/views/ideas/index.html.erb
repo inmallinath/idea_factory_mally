@@ -1,0 +1,14 @@
+<h1> All Ideas <span class="badge"><%= Idea.all.length %></span></h1>
+
+<% @ideas.each do |idea| %>
+<div class="list-group">
+  <h5>
+    <%= link_to idea.title, idea_path(idea), class: "list-group-item-heading list-group-item active" %>
+    <p class="list-group-item-text"><%=truncate(idea.body, length: 50)%></p>
+  </h5>
+</div>
+<%end%>
+
+<div id="paginate">
+  <%= will_paginate @ideas%>
+</div>
