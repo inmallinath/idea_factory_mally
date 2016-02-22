@@ -1,0 +1,12 @@
+<p>Hello <%= @owner.full_name %>,</p>
+
+<p>Your idea has been like by a user:</p>
+
+<p>Question.title: <%= @idea.title %></p>
+<p>The person who liked is: <%= @likes.user %></p>
+
+<%= link_to "Click Here to View the idea", idea_url(@idea) %>
+
+<p>Regards,</p>
+
+<p>Idea Factory team</p>

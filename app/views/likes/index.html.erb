@@ -1,0 +1,10 @@
+<h1> All your liked Ideas <span class="badge"><%= current_user.liked_ideas.count %></span></h1>
+
+<% @likes.each do |lik| %>
+<div class="list-group">
+  <h5>
+    <%= link_to lik.title, idea_path(lik), class: "list-group-item-heading list-group-item active" %>
+    <p class="list-group-item-text"><%=truncate(lik.body, length: 50)%></p>
+  </h5>
+</div>
+<%end%>

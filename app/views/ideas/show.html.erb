@@ -11,3 +11,30 @@
             idea_path(@idea),
             method: :delete,
             data: { confirm: "Are you sure you want to delete this post?" }, :class=>"btn btn-primary", :role=>"button" %>
+
+<div class="panel-footer">
+  <div class="container">
+    <div class="pull-left col-sm-10">
+      By <%= @idea.user_full_name%> on <%= @idea.created_at.strftime("%d %b %Y")%>
+      <%join = @idea.mem_for(current_user)%>
+      <% if join %>
+        <%= link_to "Joined", idea_member_path(@idea, join), method: :delete%>
+      <%else%>
+        <%= link_to "Join", idea_members_path(@idea), method: :post%>
+      <%end%>
+
+      <%lik = @idea.like_for(current_user)%>
+        <%if lik%>
+          <%= link_to "Liked", idea_like_path(@idea, lik), method: :delete%>
+        <%else%>
+          <%= link_to "Like", idea_likes_path(@idea), method: :post%>
+        <%end%>
+    </div>
+    <div style="pull-right col-sm-10">
+      Members: <%= @idea.joined_users.count %> |
+      Likes: <%= @idea.likes.count %>
+    </div>
+  </div>
+</div>
+
+</div>
