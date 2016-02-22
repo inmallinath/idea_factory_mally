@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
   before_action :find_idea, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user, except: [:index, :show]
 
   def new
     @idea = Idea.new
@@ -7,7 +8,7 @@ class IdeasController < ApplicationController
 
   def create
     @idea = Idea.new idea_params
-    #@idea.user = current_user
+    @idea.user = current_user
     if @idea.save
       flash[:notice] = "Idea created successfully"
       redirect_to idea_path(@idea), notice: "Idea has been created!"
@@ -52,6 +53,5 @@ class IdeasController < ApplicationController
   def idea_params
     params.require(:idea).permit([:title, :body])
   end
-
 
 end
