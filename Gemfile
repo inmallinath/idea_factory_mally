@@ -24,24 +24,39 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+gem 'cancancan'
 
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+
+gem "letter_opener", :group => :development
 # Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# These gems are used for nicer display in the Rails console.
+gem "awesome_print"
+gem "interactive_editor"
+gem "hirb"
+
+
 group :development, :test do
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+  gem "faker", '~> 1.6.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'nyan-cat-formatter'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem "rails-erd"
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+100.times do
+  Idea.create       title: Faker::Company.catch_phrase,
+                    body: Faker::Hipster.paragraph
+end
